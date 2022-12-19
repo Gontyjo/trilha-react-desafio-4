@@ -6,6 +6,7 @@ import * as yup from "yup";
 
 import { Container, LoginContainer, Column, Spacing, Title } from "./styles";
 import { defaultValues, IFormLogin } from "./types";
+import React from "react";
 
 const schema = yup
   .object({
@@ -28,6 +29,10 @@ const Login = () => {
     reValidateMode: "onChange",
   });
 
+  const handleAlert = () =>{
+    alert('Entrou com sucesso!')
+  }
+
   return (
     <Container>
       <LoginContainer>
@@ -49,7 +54,7 @@ const Login = () => {
             errorMessage={errors?.password?.message}
           />
           <Spacing />
-          <Button title="Entrar" />
+          <Button disabled={!isValid} title="Entrar" onClick={handleAlert}/>
         </Column>
       </LoginContainer>
     </Container>
